@@ -93,7 +93,7 @@ You can pass functions using the `on-finish` and `on-skip` attributes.The functi
 
 #### Events
 
-`tour-event` is an event that is `$emit`ed when an action is called.  This was added mainly to help with Event Tracking in Google Analytics.  The above functions still exist but aren't used.
+`tour-event` is an event that is `$emit`ed when an action is called.  This was added mainly to help with Event Tracking in Google Analytics.
 
 Example data emitted:
 
