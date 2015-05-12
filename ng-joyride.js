@@ -2,7 +2,7 @@
  * Created by abhik.mitra on 27/06/14.
  */
 
-(function (angular) {
+
 
 
     //TYPE = ELEMENT
@@ -336,8 +336,8 @@
                 'ngJoyRide': '=',
                 'config': '=',
                 'onFinish': '&',
-                'onSkip': '&'
-
+                'onSkip': '&',
+                'tourName': '='
             },
             link: function (scope, element, attrs) {
                 var steps = [];
@@ -365,6 +365,11 @@
                     return $q.when($templateCache.get(template)) || $http.get(template, { cache: true });
                 }
                 function goToNext(interval) {
+                    scope.$emit('next-step', {
+                        tour: scope.tourName,
+                        step: hasReachedEnd() ? 'final' : currentStepCount,
+                        heading: steps[currentStepCount]
+                    });
                     if (!hasReachedEnd()) {
                         currentStepCount++;
                         cleanUpPreviousStep();
@@ -522,4 +527,3 @@
     }]);
 
 
-})(angular);
