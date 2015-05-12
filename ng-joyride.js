@@ -522,7 +522,7 @@
                     scope.$emit('tour-event', {
                         event_name: evt_name,
                         tour: scope.tourName,
-                        step: hasReachedEnd() ? 'final-' + step_num,
+                        step: step_num,
                         heading: heading
                     });
                 }
