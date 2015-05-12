@@ -526,4 +526,7 @@
 
     }]);
 
-
+//Hack to override & disable in IE8
+(function (angular) {
+    if(BrowserDetect.browser == 'Explorer' && BrowserDetect.version < 9) angular.module('ngJoyRide', []);
+})(angular);
