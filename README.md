@@ -85,11 +85,31 @@ Each element of the array should be a proper joyride element.There are 4 types o
 ### Hooks in the joyride
 
 
-#### on-finish,on-skip
+~~~#### on-finish,on-skip
 
 
-You can pass functions using the `on-finish` and `on-skip` attributes.The function passed to `on-finish` will be called on finish of the joyride and the `on-skip` function will be called if the user skips from the joyride.
+You can pass functions using the `on-finish` and `on-skip` attributes.The function passed to `on-finish` will be called on finish of the joyride and the `on-skip` function will be called if the user skips from the joyride.~~~
 
+`tour-event` is an event that is `$emit`ed when an action is called.  This was added mainly to help with Event Tracking in Google Analytics.  The above functions still exist but aren't used.
+
+Example data emitted:
+
+```JS
+{
+    event_name: "start"||"end"||"skip"||"next-step", 
+    tour: tour name, 
+    step: current step number, 
+    heading: The heading of the tour step
+}
+```
+
+```JS
+$scope.$on('tour-event', function(sender, data){
+    // Handle your event here
+    // In our case:
+    TourFactory.logAnalytics(data);
+});
+```
 
 ------
 
