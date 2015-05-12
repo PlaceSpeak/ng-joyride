@@ -365,9 +365,9 @@
                     return $q.when($templateCache.get(template)) || $http.get(template, { cache: true });
                 }
                 function goToNext(interval) {
-                    emitEvent('next-step', currentStepCount, steps[currentStepCount].heading);
                     if (!hasReachedEnd()) {
                         currentStepCount++;
+                        emitEvent('next-step', currentStepCount, steps[currentStepCount].heading);
                         cleanUpPreviousStep();
                         $timeout(function(){
                             generateStep();
@@ -522,7 +522,7 @@
                     scope.$emit('tour-event', {
                         event_name: evt_name,
                         tour: scope.tourName,
-                        step: hasReachedEnd() ? 'final-' + step_num : step_num,
+                        step: hasReachedEnd() ? 'final-' + step_num,
                         heading: heading
                     });
                 }
