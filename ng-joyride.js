@@ -516,14 +516,14 @@
                         }
 
                     });
-                    emitEvent('start', currentStepCount, steps[currentStepCount].heading);
+                    emitEvent('start');
                 }
-                function emitEvent(evt_name, step_num, heading){
+                function emitEvent(evt_name){
                     scope.$emit('tour-event', {
                         event_name: evt_name,
                         tour: scope.tourName,
-                        step: step_num,
-                        heading: heading
+                        step: currentStepCount,
+                        heading: steps[currentStepCount].heading
                     });
                 }
             }
