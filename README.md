@@ -109,8 +109,6 @@ Example data emitted:
 ```js
 $scope.$on('tour-event', function(sender, data){
     // Handle your event here
-    // In our case:
-    TourFactory.logAnalytics(data);
 });
 ```
 
