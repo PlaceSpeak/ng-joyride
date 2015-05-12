@@ -28,7 +28,7 @@ angular.module('myModule', [
 There is one directive called `ng-joy-ride` which can be used as an attribute.
 
 ```sh
-<div ng-joy-ride="startJoyRide" config="config" on-finish="onFinish()"  on-skip="onFinish()"></div>
+<div ng-joy-ride="startJoyRide" config="config" on-finish="onFinish()"  on-skip="onFinish()" tour-name="tour_name"></div>
 ```  
 -----    
        
@@ -68,7 +68,7 @@ $scope.config = [
             }
 
         ];
-``` 
+```
 
 Each element of the array should be a proper joyride element.There are 4 types of `joyride-element`.
 
@@ -77,6 +77,8 @@ Each element of the array should be a proper joyride element.There are 4 types o
 * **function** - A function call . The function call will be done.Through this you can render more DOM or open a modal etc
 * **location_change** - This will change the location using `$location.path` incase the joyride needs to be across different pages of your website.    
                       
+#### tour-name - optional
+This allows you to name your tour, which is useful if you want to track events (see `Hooks in the joyride`) and/or have multiple tours in the same view.                      
 
 ####Elaborate details of each of the Joyride Elements are at the end   
 
@@ -95,7 +97,7 @@ You can pass functions using the `on-finish` and `on-skip` attributes.The functi
 
 `tour-event` is an event that is `$emit`ed when an action is called.  This was added mainly to help with Event Tracking in Google Analytics.
 
-Example data emitted:
+Example:
 
 ```js
 {
@@ -109,6 +111,12 @@ Example data emitted:
 ```js
 $scope.$on('tour-event', function(sender, data){
     // Handle your event here
+    // data == {
+    //    event_name: "start"||"end"||"skip"||"next-step", 
+    //    tour: "tour name", 
+    //    step: current step number, 
+    //    heading: "The heading of the tour step"
+    //}
 });
 ```
 
