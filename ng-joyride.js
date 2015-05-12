@@ -365,6 +365,7 @@
                     return $q.when($templateCache.get(template)) || $http.get(template, { cache: true });
                 }
                 function goToNext(interval) {
+                    emitEvent('next-step', currentStepCount, steps[currentStepCount].heading);
                     if (!hasReachedEnd()) {
                         currentStepCount++;
                         cleanUpPreviousStep();
@@ -470,7 +471,6 @@
 
                 function generateStep() {
                     var currentStep = steps[currentStepCount];
-                    emitEvent('next-step', currentStepCount, currentStep.heading);
                     currentStep.generate();
                     if (currentStep.type === "location_change" ||
                         currentStep.type === "function") {
