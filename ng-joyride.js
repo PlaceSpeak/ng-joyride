@@ -365,11 +365,6 @@
                     return $q.when($templateCache.get(template)) || $http.get(template, { cache: true });
                 }
                 function goToNext(interval) {
-                    scope.$emit('next-step', {
-                        tour: scope.tourName,
-                        step: hasReachedEnd() ? 'final' : currentStepCount,
-                        heading: steps[currentStepCount]
-                    });
                     if (!hasReachedEnd()) {
                         currentStepCount++;
                         cleanUpPreviousStep();
@@ -383,6 +378,7 @@
                     }
                 }
                 function endJoyride() {
+                    emitEvent('end', currentStepCount, steps[currentStepCount].heading);
                     steps[currentStepCount].cleanUp();
                     dropCurtain(false);
                     $timeout(function () {
@@ -419,7 +415,7 @@
                 }
 
                 function skipDemo() {
-
+                    emitEvent('skip', currentStepCount,  steps[currentStepCount].heading);
                     endJoyride();
                     scope.onSkip();
                 }
@@ -474,6 +470,7 @@
 
                 function generateStep() {
                     var currentStep = steps[currentStepCount];
+                    emitEvent('next-step', currentStepCount, currentStep.heading);
                     currentStep.generate();
                     if (currentStep.type === "location_change" ||
                         currentStep.type === "function") {
@@ -518,6 +515,15 @@
 
                         }
 
+                    });
+                    emitEvent('start', currentStepCount, steps[currentStepCount].heading);
+                }
+                function emitEvent(evt_name, step_num, heading){
+                    scope.$emit('tour-event', {
+                        event_name: evt_name,
+                        tour: scope.tourName,
+                        step: hasReachedEnd() ? 'final-' + step_num : step_num,
+                        heading: heading
                     });
                 }
             }
