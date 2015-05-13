@@ -106,7 +106,7 @@ $scope.$on('tour-event', function(sender, data){
     //    event_name: "start"||"end"||"skip"||"next-step"||"previous-step", 
     //    tour: "tour name", 
     //    step: current step number, 
-    //    heading: "The heading of the tour step"
+    //    heading: function() that returns the step heading for 'title' or 'element' steps, or 'function' or 'location_change'
     //}
 });
 ```
