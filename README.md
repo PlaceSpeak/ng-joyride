@@ -100,19 +100,10 @@ You can pass functions using the `on-finish` and `on-skip` attributes.The functi
 Example:
 
 ```js
-{
-    event_name: "start"||"end"||"skip"||"next-step", 
-    tour: tour name, 
-    step: current step number, 
-    heading: The heading of the tour step
-}
-```
-
-```js
 $scope.$on('tour-event', function(sender, data){
     // Handle your event here
     // data == {
-    //    event_name: "start"||"end"||"skip"||"next-step", 
+    //    event_name: "start"||"end"||"skip"||"next-step"||"previous-step", 
     //    tour: "tour name", 
     //    step: current step number, 
     //    heading: "The heading of the tour step"

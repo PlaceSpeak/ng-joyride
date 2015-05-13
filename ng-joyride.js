@@ -33,7 +33,11 @@
             if(config.elementTemplate){
               this.popoverTemplate = config.elementTemplate(this.content, isEnd);
             }else{
-              this.popoverTemplate = '<div class=\"row\"><div id=\"pop-over-text\" class=\"col-md-12\">' + this.content + '</div></div><hr><div class=\"row\"><div class=\"col-md-4 center\"><a class=\"skipBtn pull-left\" type=\"button\">Skip</a></div><div class=\"col-md-8\"><div class=\"pull-right\"><button id=\"prevBtn\" class=\"prevBtn btn btn-xs\" type=\"button\">Previous</button> <button id=\"nextBtn\" class=\"nextBtn btn btn-xs btn-primary\" type=\"button\">' + _generateTextForNext() + '</button></div></div></div>';
+              this.popoverTemplate = '<div class=\"row\"><div id=\"pop-over-text\" class=\"span-12\">' + 
+                                      this.content + '</div></div><hr><div class=\"row\"><div class=\"span-4 text-center\">' + 
+                                      '<a class=\"skipBtn button small pull-left\" type=\"button\">Skip</a></div><div class=\"span-8\">' + 
+                                      '<div class=\"pull-right\"><button id=\"prevBtn\" class=\"prevBtn button btn small \" type=\"button\">Previous</button>'+
+                                      ' <button id=\"nextBtn\" class=\"nextBtn button small pull-right btn-primary\" type=\"button\">' + _generateTextForNext() + '</button></div></div></div>';
             }
             this.heading = config.heading;
             this.placement = config.placement;
@@ -367,7 +371,7 @@
                 function goToNext(interval) {
                     if (!hasReachedEnd()) {
                         currentStepCount++;
-                        emitEvent('next-step', currentStepCount, steps[currentStepCount].heading);
+                        emitEvent('next-step');
                         cleanUpPreviousStep();
                         $timeout(function(){
                             generateStep();
@@ -379,7 +383,7 @@
                     }
                 }
                 function endJoyride() {
-                    emitEvent('end', currentStepCount, steps[currentStepCount].heading);
+                    emitEvent('end');
                     steps[currentStepCount].cleanUp();
                     dropCurtain(false);
                     $timeout(function () {
@@ -390,7 +394,7 @@
                     steps[currentStepCount].cleanUp();
                     var requires_timeout = false;
                     currentStepCount -= 1;
-
+                    emitEvent('previous-step');
                     // Rollback previous steps until we hit a title or element.
                     function rollbackSteps(s, i) {
                         s[i].rollback();
@@ -416,7 +420,7 @@
                 }
 
                 function skipDemo() {
-                    emitEvent('skip', currentStepCount,  steps[currentStepCount].heading);
+                    emitEvent('skip');
                     endJoyride();
                     scope.onSkip();
                 }
@@ -449,7 +453,7 @@
                         destroyJoyride();
                         initializeJoyride();
                         currentStepCount = 0;
-                        dropCurtain(true);
+                        dropCurtain(false);
                         cleanUpPreviousStep();
                         generateStep();
                     } else {

@@ -7,7 +7,7 @@
 #ng-curtain{
     position: fixed;
     background: black;
-    opacity: 0.5;
+    opacity: 0;
     top: 0px;
     left: 0px;
     height: 100%;
@@ -24,7 +24,7 @@
     width:200px;
     margin:-100px 0 0 -50px;
     background: white;
-    box-shadow:         0px 0px 28px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:  0px 0px 28px 0px rgba(50, 50, 50, 0.75);
     width: 35em;
 }
 
@@ -45,7 +45,7 @@
 }
 .ng-joyride.popover{
     z-index: 9999;
-
+    width: 250px;
 }
 .ng-joyride.popover .popover-content{
     width: 17em;
