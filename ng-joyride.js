@@ -20,7 +20,7 @@
             "<div class=\"popover ng-joyride sharp-borders\"> <div class=\"arrow\"></div>   <h3 class=\"popover-title sharp-borders\"></h3> <div class=\"popover-content container-fluid\"></div></div>"
         );
         $templateCache.put('ng-joyride-title-tplv1.html',
-            "<div id=\"ng-joyride-title-tplv1\"><div class=\"ng-joyride sharp-borders intro-banner\" style=\"\"><div class=\"popover-inner\"><h3 class=\"popover-title sharp-borders\">{{ heading }}</h3><div class=\"popover-content container-fluid\"><div ng-bind-html=\"content\"></div><hr><div class=\"row-fluid\"><div class=\"span4\"><a class=\"skipBtn pull-left button small\" type=\"button\">&nbsp; Skip</a></div><div class=\"span8\"><div class=\"pull-right\"><button class=\"prevBtn button small\" type=\"button\"></i>&nbsp;Previous</button><button id=\"nextTitleBtn\" class=\"nextBtn button small\" type=\"button\">Next&nbsp;</button></div></div></div></div></div></div></div>"
+            "<div id=\"ng-joyride-title-tplv1\"><div class=\"ng-joyride sharp-borders intro-banner\" style=\"\"><div class=\"popover-inner\"><h3 class=\"popover-title sharp-borders\">{{ heading }}</h3><div class=\"popover-content container-fluid\"><div ng-bind-html=\"content\"></div><hr><div class=\"row-fluid\"><div class=\"span4\"><a class=\"skipBtn pull-left button small\" type=\"button\">&nbsp; Skip</a></div><div class=\"span8\"><div class=\"pull-right\"><button class=\"prevBtn button btn small\" type=\"button\"></i>&nbsp;Previous</button><button id=\"nextTitleBtn\" class=\"nextBtn button small\" type=\"button\">Next&nbsp;</button></div></div></div></div></div></div></div>"
         );
     }]);
     drctv.factory('joyrideElement', ['$timeout', '$compile', '$sce', function ($timeout, $compile, $sce) {
