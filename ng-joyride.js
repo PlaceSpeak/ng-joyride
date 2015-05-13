@@ -527,7 +527,13 @@
                         event_name: evt_name,
                         tour: scope.tourName,
                         step: currentStepCount,
-                        heading: steps[currentStepCount].heading
+                        heading: function(){
+                            var step = steps[currentStepCount];
+                            if(step.type == 'element' || step.type == 'title'){
+                                return step.heading;
+                            }
+                            return step.type;
+                        }
                     });
                 }
             }
