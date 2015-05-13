@@ -536,7 +536,7 @@
 
     }]);
 
-//Hack to override & disable in IE8
+//Hack to override & disable in IE8... seems to work!
 (function (angular) {
     if(BrowserDetect.browser == 'Explorer' && BrowserDetect.version < 9) angular.module('ngJoyRide', []);
 })(angular);
