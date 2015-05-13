@@ -19,8 +19,9 @@
 .ng-joyride-title{
 
     z-index: 9999;
-    position:absolute;
-    top:50%; left:33%;
+    position:fixed;
+    top:45%;
+    left:45%;
     width:200px;
     margin:-100px 0 0 -50px;
     background: white;
