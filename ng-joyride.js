@@ -385,7 +385,7 @@
                 function endJoyride() {
                     emitEvent('end');
                     steps[currentStepCount].cleanUp();
-                    dropCurtain(false);
+                    dropCurtain(true);
                     $timeout(function () {
                         scope.ngJoyRide = false;
                     });
