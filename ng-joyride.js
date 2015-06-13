@@ -453,7 +453,7 @@
                         destroyJoyride();
                         initializeJoyride();
                         currentStepCount = 0;
-                        dropCurtain(false);
+                        dropCurtain(true);
                         cleanUpPreviousStep();
                         generateStep();
                     } else {
