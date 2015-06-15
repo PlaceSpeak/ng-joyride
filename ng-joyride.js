@@ -33,9 +33,9 @@
             if(config.elementTemplate){
               this.popoverTemplate = config.elementTemplate(this.content, isEnd);
             }else{
-              this.popoverTemplate = '<div class=\"row\"><div id=\"pop-over-text\" class=\"span-12\">' + 
-                                      this.content + '</div></div><hr><div class=\"row\"><div class=\"span-4 text-center\">' + 
-                                      '<a class=\"skipBtn button small pull-left\" type=\"button\">Skip</a></div><div class=\"span-8\">' + 
+              this.popoverTemplate = '<div class=\"row\"><div id=\"pop-over-text\" class=\"span-12\">' +
+                                      this.content + '</div></div><hr><div class=\"row\"><div class=\"span-4 text-center\">' +
+                                      '<a class=\"skipBtn button small pull-left\" type=\"button\">Skip</a></div><div class=\"span-8\">' +
                                       '<div class=\"pull-right\"><button id=\"prevBtn\" class=\"prevBtn button btn small \" type=\"button\">Previous</button>'+
                                       ' <button id=\"nextBtn\" class=\"nextBtn button small pull-right btn-primary\" type=\"button\">' + _generateTextForNext() + '</button></div></div></div>';
             }
@@ -139,7 +139,7 @@
             function _scrollToElement() {
 
                 $('html, body').animate({
-                    scrollTop: $fkEl.offset().top
+                    scrollTop: $fkEl.offset().top - 100
                 }, 1000);
             }
 
@@ -385,7 +385,7 @@
                 function endJoyride() {
                     emitEvent('end');
                     steps[currentStepCount].cleanUp();
-                    dropCurtain(false);
+                    dropCurtain(true);
                     $timeout(function () {
                         scope.ngJoyRide = false;
                     });
@@ -453,7 +453,7 @@
                         destroyJoyride();
                         initializeJoyride();
                         currentStepCount = 0;
-                        dropCurtain(false);
+                        dropCurtain(true);
                         cleanUpPreviousStep();
                         generateStep();
                     } else {
