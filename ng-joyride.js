@@ -139,7 +139,7 @@
             function _scrollToElement() {
 
                 $('html, body').animate({
-                    scrollTop: $fkEl.offset().top - 100
+                    scrollTop: $fkEl.offset().top - 200
                 }, 1000);
             }
 
